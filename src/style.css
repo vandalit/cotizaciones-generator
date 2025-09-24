@@ -1,8 +1,65 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  
+  /* Primary colors */
+  --color-primary-50: #eff6ff;
+  --color-primary-100: #dbeafe;
+  --color-primary-200: #bfdbfe;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #60a5fa;
+  --color-primary-500: #3b82f6;
+  --color-primary-600: #2563eb;
+  --color-primary-700: #1d4ed8;
+  --color-primary-800: #1e40af;
+  --color-primary-900: #1e3a8a;
+  
+  /* Gray colors */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+  
+  /* Custom shadows */
+  --shadow-bento: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-bento-lg: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-bento-xl: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* Custom animations */
+  --animate-fade-in: fadeIn 0.5s ease-in-out;
+  --animate-slide-up: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Custom utilities using @utility directive */
+@utility shadow-bento {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+@utility shadow-bento-lg {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@utility shadow-bento-xl {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
 
 @layer base {
   body {
@@ -11,95 +68,227 @@
   }
 }
 
-@layer components {
-  /* Bento Box Styles */
-  .bento-box {
-    @apply bg-white rounded-xl shadow-bento border border-gray-200 p-6 transition-all duration-200 hover:shadow-bento-lg;
-  }
-  
-  .bento-box-lg {
-    @apply bg-white rounded-xl shadow-bento-lg border border-gray-200 p-8 transition-all duration-200 hover:shadow-bento-xl;
-  }
-  
-  .bento-full-width {
-    @apply w-full col-span-full;
-  }
-  
-  /* Grid Layouts */
-  .bento-grid {
-    @apply grid gap-6;
-  }
-  
+/* Componentes usando CSS tradicional (compatible con Tailwind v4) */
+.bento-box {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+  transition: all 0.2s;
+}
+
+.bento-box:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.bento-box-lg {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  padding: 2rem;
+  transition: all 0.2s;
+}
+
+.bento-box-lg:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.bento-full-width {
+  width: 100%;
+  grid-column: 1 / -1;
+}
+
+.bento-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.bento-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
   .bento-grid-2 {
-    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
+}
+
+.bento-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
   .bento-grid-3 {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
+}
+
+@media (min-width: 1024px) {
+  .bento-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.bento-grid-auto {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
   .bento-grid-auto {
-    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .bento-grid-auto {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .bento-grid-auto {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.bento-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.bento-flex > * {
+  flex: 1;
+  min-width: 0;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.btn-primary:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.btn-secondary {
+  background-color: #f3f4f6;
+  color: #374151;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background-color: #e5e7eb;
+}
+
+.btn-secondary:focus {
+  outline: 2px solid #6b7280;
+  outline-offset: 2px;
+}
+.btn-outline {
+  border: 1px solid #2563eb;
+  color: #2563eb;
+  background-color: transparent;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background-color: #eff6ff;
+}
+
+.btn-outline:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Form Styles */
+.form-input {
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.form-input:focus {
+  border-color: #3b82f6;
+  outline: 2px solid #3b82f6;
+  outline-offset: -2px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+/* Card Styles */
+.quotation-card {
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.quotation-card:hover {
+  border-color: #93c5fd;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: scale(1.02);
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none;
   }
   
-  /* Flex Layouts */
-  .bento-flex {
-    @apply flex flex-wrap gap-6;
+  .print-full-width {
+    width: 100%;
   }
   
-  .bento-flex > * {
-    @apply flex-1 min-w-0;
+  .bento-box,
+  .bento-box-lg {
+    box-shadow: none;
+    border: 1px solid #d1d5db;
   }
   
-  /* Button Styles */
-  .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-  }
-  
-  .btn-secondary {
-    @apply bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
-  }
-  
-  .btn-outline {
-    @apply border border-primary-600 text-primary-600 hover:bg-primary-50 font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
-  }
-  
-  /* Form Styles */
-  .form-input {
-    @apply block w-full rounded-lg border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm;
-  }
-  
-  .form-label {
-    @apply block text-sm font-medium text-gray-700 mb-2;
-  }
-  
-  /* Card Styles */
-  .quotation-card {
-    @apply bento-box cursor-pointer hover:border-primary-300 hover:shadow-lg transition-all duration-200;
-  }
-  
-  .quotation-card:hover {
-    @apply transform scale-[1.02];
-  }
-  
-  /* Print Styles */
-  @media print {
-    .no-print {
-      @apply hidden;
-    }
-    
-    .print-full-width {
-      @apply w-full;
-    }
-    
-    .bento-box,
-    .bento-box-lg {
-      @apply shadow-none border border-gray-300;
-    }
-    
-    body {
-      @apply bg-white;
-    }
+  body {
+    background-color: white;
   }
 }
 
