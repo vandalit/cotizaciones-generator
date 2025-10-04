@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true" data-cy="new-quotation-modal">
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
       <!-- Background overlay -->
       <div 
@@ -15,7 +15,7 @@
             <DocumentPlusIcon class="h-6 w-6 text-primary-600" aria-hidden="true" />
           </div>
           <div class="mt-3 text-center sm:mt-5">
-            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title" data-cy="modal-title">
               Nueva Cotización
             </h3>
             <div class="mt-2">
@@ -26,7 +26,7 @@
           </div>
         </div>
 
-        <form @submit.prevent="createQuotation" class="mt-6">
+        <form @submit.prevent="createQuotation" class="mt-6" data-cy="quotation-form">
           <div class="mb-4">
             <label for="client" class="form-label">Cliente</label>
             <select
@@ -34,6 +34,8 @@
               v-model="selectedClientId"
               class="form-input"
               required
+              name="clientId"
+              data-cy="client-select"
             >
               <option value="">Seleccionar cliente...</option>
               <option
@@ -41,7 +43,7 @@
                 :key="client.id"
                 :value="client.id"
               >
-                {{ client.name }} ({{ client.code }})
+                {{ client.name }} ({{ client.email }})
               </option>
             </select>
           </div>
@@ -90,6 +92,7 @@
               type="button"
               @click="$emit('close')"
               class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 sm:mt-0 sm:col-start-1 sm:text-sm"
+              data-cy="close-modal"
             >
               Cancelar
             </button>

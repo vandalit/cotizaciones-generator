@@ -5,8 +5,8 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center py-6">
           <div>
-            <h1 class="text-3xl font-bold text-gray-900">Generador de Cotizaciones</h1>
-            <p class="text-gray-600 mt-1">Gestiona tus cotizaciones de forma profesional</p>
+            <h1 class="text-3xl font-bold text-gray-900" data-cy="dashboard-title">Generador de Cotizaciones</h1>
+            <p class="text-gray-600 mt-1" data-cy="dashboard-subtitle">Gestiona tus cotizaciones de forma profesional</p>
           </div>
           <div class="flex space-x-4">
             <button
@@ -20,8 +20,16 @@
               @click="$router.push('/clients')"
               class="btn-secondary flex items-center space-x-2"
             >
-              <UsersIcon class="h-5 w-5" />
-              <span>Clientes</span>
+              <UserPlusIcon class="h-5 w-5" />
+              <span>Nuevo Cliente</span>
+            </button>
+            <button
+              @click="loadDemoData"
+              class="btn-outline flex items-center space-x-2"
+              title="Cargar datos demo"
+            >
+              <ArrowDownTrayIcon class="h-5 w-5" />
+              <span>Demo Data</span>
             </button>
           </div>
         </div>
@@ -185,6 +193,7 @@ import {
   ArrowDownTrayIcon
 } from '@heroicons/vue/24/outline'
 import NewQuotationModal from '@/components/NewQuotationModal.vue'
+import { forceLoadDemoData } from '@/utils/forceLoadDemo'
 
 const router = useRouter()
 const store = useQuotationsStore()
@@ -239,8 +248,26 @@ function handleQuotationCreated(quotationId: string): void {
   router.push(`/quotations/${quotationId}`)
 }
 
+async function loadDemoData(): Promise<void> {
+  console.log('🔄 Cargando datos demo manualmente...')
+  try {
+    await forceLoadDemoData()
+    await store.initialize()
+    console.log('✅ Datos demo cargados exitosamente')
+  } catch (error) {
+    console.error('❌ Error cargando datos demo:', error)
+  }
+}
+
 // Lifecycle
 onMounted(async () => {
   await store.initialize()
+  
+  // Si no hay cotizaciones, forzar carga de datos demo
+  if (store.totalQuotations === 0) {
+    console.log('⚠️ No hay cotizaciones, forzando carga de datos demo...')
+    await forceLoadDemoData()
+    await store.initialize() // Re-inicializar después de cargar datos
+  }
 })
 </script>

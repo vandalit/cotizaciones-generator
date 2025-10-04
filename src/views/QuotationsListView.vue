@@ -193,13 +193,13 @@
               <tr v-for="quotation in paginatedQuotations" :key="quotation.id" class="hover:bg-gray-50">
                 <td class="px-6 py-4">
                   <div>
-                    <div class="text-sm font-medium text-gray-900">{{ quotation.code }}</div>
-                    <div class="text-sm text-gray-500">{{ quotation.items.length }} items</div>
+                    <div class="text-sm font-medium text-gray-900">{{ quotation.number }}</div>
+                    <div class="text-sm text-gray-500">{{ quotation.deliverables.length }} entregables</div>
                   </div>
                 </td>
                 <td class="px-6 py-4">
-                  <div class="text-sm text-gray-900">{{ quotation.client?.name }}</div>
-                  <div class="text-sm text-gray-500">{{ quotation.client?.email }}</div>
+                  <div class="text-sm text-gray-900">{{ getClientName(quotation.clientId) }}</div>
+                  <div class="text-sm text-gray-500">{{ getClientEmail(quotation.clientId) }}</div>
                 </td>
                 <td class="px-6 py-4">
                   <span
@@ -333,7 +333,7 @@
     <ConfirmModal
       v-if="showDeleteModal && quotationToDelete"
       title="Eliminar Cotización"
-      :message="`¿Estás seguro de que quieres eliminar la cotización ${quotationToDelete.code}? Esta acción no se puede deshacer.`"
+      :message="`¿Estás seguro de que quieres eliminar la cotización ${quotationToDelete?.number}? Esta acción no se puede deshacer.`"
       confirm-text="Eliminar"
       confirm-class="bg-red-600 hover:bg-red-700"
       @confirm="deleteQuotation"
@@ -580,8 +580,19 @@ function handleQuotationCreated(quotationId: string): void {
   router.push(`/quotations/${quotationId}/edit`)
 }
 
+// Helper functions (using the ones defined above)
+function getClientName(clientId: string): string {
+  const client = store.getClientById(clientId)
+  return client?.name || 'Cliente no encontrado'
+}
+
+function getClientEmail(clientId: string): string {
+  const client = store.getClientById(clientId)
+  return client?.email || 'Email no disponible'
+}
+
 // Lifecycle
-onMounted(() => {
-  store.loadFromLocalStorage()
+onMounted(async () => {
+  await store.initialize()
 })
 </script>
