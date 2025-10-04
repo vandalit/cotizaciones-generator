@@ -54,6 +54,15 @@
               <span class="text-orange-500">🧪</span>
               <span class="ml-1">Test CSS</span>
             </router-link>
+            
+            <router-link
+              to="/debug"
+              :class="getNavLinkClass('/debug')"
+              class="inline-flex items-center px-1 pt-1 text-sm font-medium transition-colors duration-200"
+            >
+              <span class="text-red-500">🔧</span>
+              <span class="ml-1">Debug</span>
+            </router-link>
           </div>
         </div>
 

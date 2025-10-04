@@ -39,7 +39,7 @@
             </div>
             <div class="ml-4">
               <p class="text-sm font-medium text-gray-600">Borradores</p>
-              <p class="text-2xl font-bold text-gray-900">{{ quotationsByStatus.draft.length }}</p>
+              <p class="text-2xl font-bold text-gray-900">{{ draftQuotations.length }}</p>
             </div>
           </div>
         </div>
@@ -50,8 +50,8 @@
               <PaperAirplaneIcon class="h-8 w-8 text-blue-600" />
             </div>
             <div class="ml-4">
-              <p class="text-sm font-medium text-gray-600">Enviadas</p>
-              <p class="text-2xl font-bold text-gray-900">{{ quotationsByStatus.sent.length }}</p>
+              <p class="text-sm font-medium text-gray-600">Pendientes</p>
+              <p class="text-2xl font-bold text-gray-900">{{ pendingQuotations.length }}</p>
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@
             </div>
             <div class="ml-4">
               <p class="text-sm font-medium text-gray-600">Aprobadas</p>
-              <p class="text-2xl font-bold text-gray-900">{{ quotationsByStatus.approved.length }}</p>
+              <p class="text-2xl font-bold text-gray-900">{{ approvedQuotations.length }}</p>
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@
             </div>
             <div class="ml-4">
               <p class="text-sm font-medium text-gray-600">Rechazadas</p>
-              <p class="text-2xl font-bold text-gray-900">{{ quotationsByStatus.rejected.length }}</p>
+              <p class="text-2xl font-bold text-gray-900">{{ rejectedQuotations.length }}</p>
             </div>
           </div>
         </div>
@@ -380,7 +380,13 @@ const showDeleteModal = ref(false)
 const quotationToDelete = ref<Quotation | null>(null)
 
 // Store data
-const { quotations, clients, quotationsByStatus } = store
+const { quotations, clients } = store
+
+// Computed para estados de cotizaciones
+const draftQuotations = computed(() => quotations.value.filter(q => q.status === 'draft'))
+const pendingQuotations = computed(() => quotations.value.filter(q => q.status === 'pending'))
+const approvedQuotations = computed(() => quotations.value.filter(q => q.status === 'approved'))
+const rejectedQuotations = computed(() => quotations.value.filter(q => q.status === 'rejected'))
 
 // Computed
 const hasFilters = computed(() => {
@@ -556,12 +562,13 @@ function deleteQuotation(): void {
 }
 
 function exportData(): void {
-  const csv = store.exportToCSV()
-  const blob = new Blob([csv], { type: 'text/csv' })
+  // Por ahora, exportamos los datos básicos
+  const data = store.exportData()
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
   const url = window.URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = `cotizaciones-${new Date().toISOString().split('T')[0]}.csv`
+  a.download = `cotizaciones-${new Date().toISOString().split('T')[0]}.json`
   document.body.appendChild(a)
   a.click()
   document.body.removeChild(a)

@@ -4,6 +4,7 @@ import ClientsView from '@/views/ClientsView.vue'
 import QuotationView from '@/views/QuotationView.vue'
 import QuotationsListView from '@/views/QuotationsListView.vue'
 import TestView from '@/views/TestView.vue'
+import DebugView from '@/views/DebugView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -54,6 +55,14 @@ const router = createRouter({
       component: TestView,
       meta: {
         title: 'Test CSS - Generador de Cotizaciones'
+      }
+    },
+    {
+      path: '/debug',
+      name: 'debug',
+      component: DebugView,
+      meta: {
+        title: 'Debug Panel - Generador de Cotizaciones'
       }
     },
     {

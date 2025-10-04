@@ -1,0 +1,396 @@
+{
+  "clients": [
+    {
+      "id": "client-001",
+      "name": "Empresa Tecnológica SpA",
+      "email": "contacto@tecno.cl",
+      "phone": "+56 9 8765 4321",
+      "address": "Av. Providencia 1234, Santiago",
+      "rut": "76.543.210-K",
+      "contactPerson": "María González",
+      "industry": "Tecnología",
+      "createdAt": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": "client-002", 
+      "name": "Constructora del Sur Ltda",
+      "email": "proyectos@constructora.cl",
+      "phone": "+56 2 2345 6789",
+      "address": "Las Condes 567, Santiago",
+      "rut": "78.901.234-5",
+      "contactPerson": "Carlos Rodríguez",
+      "industry": "Construcción",
+      "createdAt": "2024-02-20T14:15:00Z"
+    },
+    {
+      "id": "client-003",
+      "name": "Retail Fashion Store",
+      "email": "admin@fashion.cl",
+      "phone": "+56 9 1234 5678",
+      "address": "Mall Plaza Norte, Local 45",
+      "rut": "65.432.109-8",
+      "contactPerson": "Ana Martínez",
+      "industry": "Retail",
+      "createdAt": "2024-03-10T09:45:00Z"
+    }
+  ],
+  "quotations": [
+    {
+      "id": "quote-001",
+      "clientId": "client-001",
+      "number": "COT-2024-001",
+      "title": "Desarrollo Sistema de Gestión",
+      "status": "pending",
+      "validUntil": "2024-12-31",
+      "createdAt": "2024-09-01T10:00:00Z",
+      "updatedAt": "2024-09-01T10:00:00Z",
+      "personalInfo": {
+        "companyName": "TechSolutions Pro",
+        "contactName": "Juan Pérez",
+        "email": "juan@techsolutions.cl",
+        "phone": "+56 9 8888 7777",
+        "address": "Av. Apoquindo 3000, Las Condes"
+      },
+      "projectAbstract": {
+        "title": "Sistema de Gestión Empresarial",
+        "description": "Desarrollo de plataforma web para gestión integral de procesos empresariales, incluyendo CRM, inventario y facturación.",
+        "objectives": [
+          "Automatizar procesos manuales",
+          "Centralizar información empresarial", 
+          "Mejorar eficiencia operacional"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "del-001",
+          "name": "Análisis y Diseño",
+          "description": "Levantamiento de requerimientos y diseño de arquitectura",
+          "quantity": 1,
+          "unit": "proyecto",
+          "unitPrice": 2500000,
+          "total": 2500000
+        },
+        {
+          "id": "del-002", 
+          "name": "Desarrollo Frontend",
+          "description": "Interfaz de usuario responsive con Vue.js",
+          "quantity": 80,
+          "unit": "horas",
+          "unitPrice": 35000,
+          "total": 2800000
+        },
+        {
+          "id": "del-003",
+          "name": "Desarrollo Backend",
+          "description": "API REST con Laravel y base de datos",
+          "quantity": 120,
+          "unit": "horas", 
+          "unitPrice": 40000,
+          "total": 4800000
+        }
+      ],
+      "assumptions": [
+        "Cliente proporcionará acceso a sistemas existentes",
+        "Información base será entregada en formato digital",
+        "Se realizarán reuniones semanales de seguimiento",
+        "Hosting y dominio por cuenta del cliente"
+      ],
+      "timeline": {
+        "startDate": "2024-10-01",
+        "endDate": "2024-12-31",
+        "phases": [
+          {
+            "name": "Análisis",
+            "duration": "2 semanas",
+            "startDate": "2024-10-01",
+            "endDate": "2024-10-14"
+          },
+          {
+            "name": "Desarrollo",
+            "duration": "10 semanas", 
+            "startDate": "2024-10-15",
+            "endDate": "2024-12-20"
+          },
+          {
+            "name": "Testing y Deploy",
+            "duration": "2 semanas",
+            "startDate": "2024-12-21", 
+            "endDate": "2024-12-31"
+          }
+        ]
+      },
+      "commercialConditions": {
+        "currency": "CLP",
+        "paymentTerms": "30% al inicio, 40% al 50% de avance, 30% al finalizar",
+        "validityDays": 30,
+        "warranty": "3 meses de garantía post-entrega",
+        "additionalTerms": [
+          "Precios no incluyen IVA",
+          "Cambios de alcance serán cotizados por separado"
+        ]
+      },
+      "optionalItems": [
+        {
+          "id": "opt-001",
+          "name": "Capacitación usuarios",
+          "description": "Sesiones de capacitación para 10 usuarios",
+          "price": 500000,
+          "selected": false
+        },
+        {
+          "id": "opt-002",
+          "name": "Soporte técnico 6 meses",
+          "description": "Soporte técnico extendido por 6 meses",
+          "price": 800000,
+          "selected": true
+        }
+      ],
+      "bankingDetails": {
+        "bankName": "Banco Estado",
+        "accountType": "Cuenta Corriente",
+        "accountNumber": "12345678-9",
+        "rut": "12.345.678-9"
+      },
+      "notes": "Proyecto estratégico para modernización digital de la empresa. Se requiere especial atención en la integración con sistemas legacy.",
+      "totals": {
+        "subtotal": 10100000,
+        "optionalSelected": 800000,
+        "subtotalWithOptional": 10900000,
+        "tax": 2071000,
+        "total": 12971000
+      }
+    },
+    {
+      "id": "quote-002",
+      "clientId": "client-002",
+      "number": "COT-2024-002", 
+      "title": "App Móvil Control de Obra",
+      "status": "approved",
+      "validUntil": "2024-11-30",
+      "createdAt": "2024-08-15T14:30:00Z",
+      "updatedAt": "2024-09-20T16:45:00Z",
+      "personalInfo": {
+        "companyName": "Constructora del Sur Ltda",
+        "contactName": "Carlos Rodríguez",
+        "email": "carlos@constructora.cl", 
+        "phone": "+56 2 2345 6789",
+        "address": "Las Condes 567, Santiago"
+      },
+      "projectAbstract": {
+        "title": "Aplicación Móvil para Control de Obra",
+        "description": "App nativa para iOS y Android que permita el control y seguimiento de obras en construcción.",
+        "objectives": [
+          "Digitalizar reportes de obra",
+          "Mejorar comunicación en terreno",
+          "Centralizar documentación fotográfica"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "del-004",
+          "name": "Diseño UX/UI",
+          "description": "Diseño de interfaz y experiencia de usuario",
+          "quantity": 1,
+          "unit": "proyecto",
+          "unitPrice": 1500000,
+          "total": 1500000
+        },
+        {
+          "id": "del-005",
+          "name": "Desarrollo App iOS",
+          "description": "Aplicación nativa para iPhone/iPad",
+          "quantity": 1,
+          "unit": "proyecto", 
+          "unitPrice": 4000000,
+          "total": 4000000
+        },
+        {
+          "id": "del-006",
+          "name": "Desarrollo App Android",
+          "description": "Aplicación nativa para Android",
+          "quantity": 1,
+          "unit": "proyecto",
+          "unitPrice": 3500000,
+          "total": 3500000
+        }
+      ],
+      "assumptions": [
+        "Se utilizarán las tiendas oficiales para distribución",
+        "Cliente gestionará permisos de publicación",
+        "Pruebas en dispositivos reales incluidas"
+      ],
+      "timeline": {
+        "startDate": "2024-09-01",
+        "endDate": "2024-11-30", 
+        "phases": [
+          {
+            "name": "Diseño",
+            "duration": "3 semanas",
+            "startDate": "2024-09-01",
+            "endDate": "2024-09-21"
+          },
+          {
+            "name": "Desarrollo",
+            "duration": "8 semanas",
+            "startDate": "2024-09-22", 
+            "endDate": "2024-11-16"
+          },
+          {
+            "name": "Testing",
+            "duration": "2 semanas",
+            "startDate": "2024-11-17",
+            "endDate": "2024-11-30"
+          }
+        ]
+      },
+      "commercialConditions": {
+        "currency": "CLP",
+        "paymentTerms": "50% al inicio, 50% al finalizar",
+        "validityDays": 45,
+        "warranty": "6 meses de garantía",
+        "additionalTerms": [
+          "Incluye publicación en tiendas",
+          "Actualizaciones menores incluidas por 3 meses"
+        ]
+      },
+      "optionalItems": [
+        {
+          "id": "opt-003",
+          "name": "Panel Web Administrativo",
+          "description": "Dashboard web para gestión centralizada",
+          "price": 2000000,
+          "selected": true
+        }
+      ],
+      "bankingDetails": {
+        "bankName": "Banco Estado", 
+        "accountType": "Cuenta Corriente",
+        "accountNumber": "12345678-9",
+        "rut": "12.345.678-9"
+      },
+      "notes": "Proyecto aprobado. Inicio confirmado para septiembre 2024.",
+      "totals": {
+        "subtotal": 9000000,
+        "optionalSelected": 2000000,
+        "subtotalWithOptional": 11000000,
+        "tax": 2090000,
+        "total": 13090000
+      }
+    },
+    {
+      "id": "quote-003",
+      "clientId": "client-003",
+      "number": "COT-2024-003",
+      "title": "E-commerce Fashion Store",
+      "status": "draft",
+      "validUntil": "2024-10-15",
+      "createdAt": "2024-09-20T11:20:00Z",
+      "updatedAt": "2024-09-20T11:20:00Z",
+      "personalInfo": {
+        "companyName": "Retail Fashion Store",
+        "contactName": "Ana Martínez",
+        "email": "ana@fashion.cl",
+        "phone": "+56 9 1234 5678",
+        "address": "Mall Plaza Norte, Local 45"
+      },
+      "projectAbstract": {
+        "title": "Tienda Online de Moda",
+        "description": "Desarrollo de e-commerce completo para venta online de productos de moda y accesorios.",
+        "objectives": [
+          "Expandir ventas al canal digital",
+          "Integrar con sistemas de inventario",
+          "Ofrecer experiencia de compra moderna"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "del-007",
+          "name": "Desarrollo E-commerce",
+          "description": "Plataforma completa con carrito, pagos y gestión",
+          "quantity": 1,
+          "unit": "proyecto",
+          "unitPrice": 5500000,
+          "total": 5500000
+        },
+        {
+          "id": "del-008",
+          "name": "Integración Pagos",
+          "description": "Webpay, Mercado Pago y transferencias",
+          "quantity": 1,
+          "unit": "proyecto",
+          "unitPrice": 800000,
+          "total": 800000
+        }
+      ],
+      "assumptions": [
+        "Catálogo de productos será proporcionado por cliente",
+        "Fotografías profesionales por cuenta del cliente",
+        "Certificado SSL incluido por 1 año"
+      ],
+      "timeline": {
+        "startDate": "2024-10-15",
+        "endDate": "2024-12-15",
+        "phases": [
+          {
+            "name": "Setup y Configuración",
+            "duration": "1 semana",
+            "startDate": "2024-10-15",
+            "endDate": "2024-10-21"
+          },
+          {
+            "name": "Desarrollo",
+            "duration": "7 semanas",
+            "startDate": "2024-10-22",
+            "endDate": "2024-12-09"
+          },
+          {
+            "name": "Testing y Lanzamiento",
+            "duration": "1 semana",
+            "startDate": "2024-12-10",
+            "endDate": "2024-12-15"
+          }
+        ]
+      },
+      "commercialConditions": {
+        "currency": "CLP",
+        "paymentTerms": "40% al inicio, 60% al finalizar",
+        "validityDays": 20,
+        "warranty": "2 meses de garantía",
+        "additionalTerms": [
+          "Hosting primer año incluido",
+          "Capacitación administrativa incluida"
+        ]
+      },
+      "optionalItems": [
+        {
+          "id": "opt-004",
+          "name": "SEO Básico",
+          "description": "Optimización básica para motores de búsqueda",
+          "price": 400000,
+          "selected": false
+        },
+        {
+          "id": "opt-005",
+          "name": "App Móvil Básica",
+          "description": "App móvil complementaria",
+          "price": 2500000,
+          "selected": false
+        }
+      ],
+      "bankingDetails": {
+        "bankName": "Banco Estado",
+        "accountType": "Cuenta Corriente", 
+        "accountNumber": "12345678-9",
+        "rut": "12.345.678-9"
+      },
+      "notes": "Cotización en borrador. Pendiente definir detalles de integración con POS físico.",
+      "totals": {
+        "subtotal": 6300000,
+        "optionalSelected": 0,
+        "subtotalWithOptional": 6300000,
+        "tax": 1197000,
+        "total": 7497000
+      }
+    }
+  ]
+}

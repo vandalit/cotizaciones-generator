@@ -356,16 +356,15 @@ function handleClientSaved(): void {
 }
 
 function exportClients(): void {
-  const headers = ['Nombre', 'Código', 'Email', 'Teléfono', 'Dirección', 'RUT', 'Contacto', 'Creado']
-  const rows = clients.map(client => [
+  const headers = ['Nombre', 'Email', 'Teléfono', 'Dirección', 'RUT', 'Contacto', 'Creado']
+  const rows = clients.value.map(client => [
     client.name,
-    client.code,
     client.email,
     client.phone,
     client.address,
     client.rut || '',
     client.contactPerson || '',
-    client.createdAt.toLocaleDateString()
+    new Date(client.createdAt).toLocaleDateString()
   ])
 
   const csv = [headers, ...rows].map(row => row.join(',')).join('\n')

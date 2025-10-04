@@ -5,9 +5,8 @@ import AppNavbar from '@/components/AppNavbar.vue'
 
 const store = useQuotationsStore()
 
-onMounted(() => {
-  store.loadFromLocalStorage()
-  store.initializeSampleData()
+onMounted(async () => {
+  await store.initialize()
 })
 </script>
 

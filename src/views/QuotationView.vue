@@ -10,8 +10,8 @@
               Volver
             </button>
             <div>
-              <h1 class="text-2xl font-bold text-gray-900">{{ quotation.code }}</h1>
-              <p class="text-gray-600">{{ quotation.client?.name }}</p>
+              <h1 class="text-2xl font-bold text-gray-900">{{ quotation.number }}</h1>
+              <p class="text-gray-600">{{ getClientName(quotation.clientId) }}</p>
             </div>
           </div>
           <div class="flex space-x-3">
@@ -531,9 +531,15 @@ watch(() => quotation.value?.items, () => {
   }
 }, { deep: true })
 
+// Helper functions
+function getClientName(clientId: string): string {
+  const client = store.getClientById(clientId)
+  return client?.name || 'Cliente no encontrado'
+}
+
 // Lifecycle
-onMounted(() => {
-  store.loadFromLocalStorage()
+onMounted(async () => {
+  await store.initialize()
   
   // Si estamos en modo edición desde la URL
   if (route.path.endsWith('/edit')) {
